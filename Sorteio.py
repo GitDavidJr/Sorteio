@@ -8,26 +8,19 @@ def main(page: ft.Page):
 
     numeroSorteado = ft.TextField(label="Numero que vai ser sorteado", width=tamahoCaixa)
 
-    sorteio_img = ft.Image(src="sorteio.png", width=300, height=70)
+    sorteio_img = ft.Image(src="sorteio.png", width=600, height=140)
 
     numeroInicio = ft.TextField(label="Primeiro numero", width=tamahoCaixa)
     numeroFim = ft.TextField(label="Ultimo numero", width=tamahoCaixa)
 
     def sortearNum(e):
         page.add(ft.Text(
-            f"NUMERO SORTEADO: {numero}",
-            size=40,
-            color=ft.colors.BLUE,
-            weight=ft.FontWeight.BOLD,
-            italic=True,
-            shadow=ft.BoxShadow(
-            spread_radius=5,
-            blur_radius=10,
-            color=ft.colors.GREY,
-            offset=ft.Offset(3, 3)
-            )
-            )
-        )
+        f"NUMERO SORTEADO: {numero}",
+        size=40,
+        color=ft.colors.BLUE,
+        weight=ft.FontWeight.BOLD,
+        italic=True
+    ))
 
     def start(e):
 
