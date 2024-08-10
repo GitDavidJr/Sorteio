@@ -1,3 +1,4 @@
+import random
 import flet as ft
 
 lista = []  
@@ -57,15 +58,51 @@ def main(page: ft.Page):
     page.vertical_alignment=ft.MainAxisAlignment.CENTER
     page.horizontal_alignment=ft.CrossAxisAlignment.CENTER
 
-    page.add(
-        ft.Column(
+
+    def programado(e):
+        page.clean()
+        page.add(
+            ft.Column(
+                [
+                    numeroSorteado,
+                    ft.ElevatedButton(text="Começar", on_click=start)
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            )
+        )
+
+    def sortearNumAleatorio(e):
+        global first
+
+        if first:
+            text_sorteado.value = f"NUMERO SORTEADO: {random.randint(int(numeroInicio.value),int(numeroFim.value))}"
+            page.add(text_sorteado)
+            first = False
+        else:
+            text_sorteado.value = f"NUMERO SORTEADO: {random.randint(int(numeroInicio.value),int(numeroFim.value))}"
+            page.update()
+    
+    def aleatorio(e):
+        
+        page.clean()
+        page.add(
+            ft.Column(
             [
-                numeroSorteado,
-                ft.ElevatedButton(text="Começar", on_click=start)
+                sorteio_img,
+                numeroInicio,
+                numeroFim,
+                ft.ElevatedButton(text="Sortear", on_click=sortearNumAleatorio)
             ],
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            )   
         )
+
+    page.add(
+        ft.ElevatedButton(text="Sorteio aleatorio", on_click=aleatorio),
+        ft.ElevatedButton(text="Sorteio programado", on_click=programado)
+    
     )
 
 ft.app(target=main)
